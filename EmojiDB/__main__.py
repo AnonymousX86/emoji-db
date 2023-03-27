@@ -25,7 +25,10 @@ if __name__ == '__main__':
         return list(map(lambda f: remove_ext(f)[0], files_list))
 
     def emoji_files(emoji_id: str) -> list[str]:
-        return list(filter(lambda e: e.startswith(emoji_id), all_emoji_files_names()))
+        return list(filter(
+            lambda e: e.startswith(emoji_id),
+            all_emoji_files_names())
+        )
     
     def emoji_exts(emoji_id: str) -> list[str]:
         return list(map(lambda e: remove_ext(e)[1], emoji_files(emoji_id)))
