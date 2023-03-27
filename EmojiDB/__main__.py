@@ -56,7 +56,7 @@ if __name__ == '__main__':
     
     @app.route('/emoji/<emoji_id>')
     def emoji_by_id(emoji_id: str) -> Response:
-        if emoji_id not in all_emoji_ids:
+        if emoji_id not in all_emoji_ids():
             raise EmojiNotFound
         exts = emoji_exts(emoji_id)
         for ext in ['webp', 'png', 'gif', 'jpeg', 'jpg']:
