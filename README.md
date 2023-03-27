@@ -1,2 +1,4 @@
-# emoji-db
+# Emoji DB
+
  Emoji database for universal usage.
+
