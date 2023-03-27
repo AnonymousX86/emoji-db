@@ -11,8 +11,10 @@ class EmojiNotFound(HTTPException):
     description = 'Emoji does not exist.'
 
 
+app = Flask(__name__)
+
+
 if __name__ == '__main__':
-    app = Flask(__name__)
     path = f'{realpath(__file__)}assets{sep}img'.replace(
         '__main__.py', ''
     )
@@ -74,4 +76,4 @@ if __name__ == '__main__':
             return app.redirect(f'/emoji/{emoji_id}')
         return send_file(f'{path}{sep}{emoji_id}.{emoji_ext}')
 
-    app.run(debug=True)
+    app.run()
