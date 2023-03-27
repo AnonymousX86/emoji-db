@@ -16,7 +16,6 @@ if __name__ == '__main__':
     path = f'{realpath(__file__)}assets{sep}img'.replace(
         '__main__.py', ''
     )
-    breakpoint()
 
     def all_emoji_files_names() -> list[str]:
         return listdir(path)
