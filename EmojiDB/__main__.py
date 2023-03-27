@@ -66,7 +66,6 @@ if __name__ == '__main__':
     
     @app.route('/emoji/<emoji_id>.<emoji_ext>')
     def emoji_qualified(emoji_id: str, emoji_ext: str) -> Response:
-        breakpoint()
         if emoji_id not in all_emoji_ids():
             raise EmojiNotFound
         elif emoji_ext not in emoji_exts(emoji_id):
