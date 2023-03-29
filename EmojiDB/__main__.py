@@ -55,7 +55,7 @@ if __name__ == '__main__':
         return jsonify({'data': {
             'id': emoji_id,
             'extensions': emoji_exts(emoji_id),
-            'sizes': ['112', '112']
+            'sizes': ['112', '112']  # TODO Sizes checking in runtime
         }})
     
     @app.route('/emoji/<emoji_id>')
