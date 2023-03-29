@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
+from logging import INFO, basicConfig, getLogger
 from os import listdir, sep
 from os.path import realpath
 
 from flask import Flask, Response, jsonify, send_file
+from rich.logging import RichHandler
 from werkzeug.exceptions import NotFound
 
 
@@ -14,6 +16,15 @@ app = Flask(__name__)
 
 
 if __name__ == '__main__':
+    basicConfig(
+        level=INFO,
+        format='%(message)s',
+        datefmt='[%x]',
+        handlers=RichHandler(rich_tracebacks=True)
+    )
+    getLogger(app.name).setLevel(INFO)
+    getLogger('werkzeug').setLevel(INFO)
+
     path = f'{realpath(__file__)}assets{sep}img'.replace(
         '__main__.py', ''
     )
