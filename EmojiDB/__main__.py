@@ -3,11 +3,10 @@ from os import listdir, sep
 from os.path import realpath
 
 from flask import Flask, Response, jsonify, send_file
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 
 
-class EmojiNotFound(HTTPException):
-    code = 404
+class EmojiNotFound(NotFound):
     description = 'Emoji does not exist.'
 
 
