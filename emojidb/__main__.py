@@ -13,11 +13,11 @@ class EmojiNotFound(NotFound):
 
 app = Flask(__name__)
 
-path = Path.cwd()
+IMG_FOLDER = Path.cwd().joinpath('assets', 'img')
 
 
 def all_emoji_files() -> list[Path]:
-    return [d for d in path.iterdir()]
+    return [d for d in IMG_FOLDER.iterdir()]
 
 
 def split_ext(file_name: str) -> list[str, str]:
@@ -50,7 +50,7 @@ def emoji_by_id(emoji_id: str) -> Response:
     if emoji_id not in all_emoji_ids():
         raise EmojiNotFound
     for ext in ['webp', 'png', 'gif', 'jpeg', 'jpg']:
-        if (emoji := path.joinpath(emoji_id, f'.{ext}')).exists():
+        if (emoji := IMG_FOLDER.joinpath(emoji_id, f'.{ext}')).exists():
             return send_file(emoji)
     app.aborter(500, description='Emoji exists, but is badly configured.')
 
