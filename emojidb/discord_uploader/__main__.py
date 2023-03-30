@@ -34,7 +34,7 @@ def checksum_lookup(content: bytes) -> tuple[bool, Path or None]:
 class EmojiMeta:
     def __init__(self, emoji_raw: str):
         emoji_raw = emoji_raw[1:-1].split(':')
-        self.format: str = 'gif' if emoji_raw[0] == 'a' else 'webp'
+        self.format: str = 'gif' if emoji_raw[0] == 'a' else 'png'
         self.name: str = name_parse(emoji_raw[1])
         self.id: int = int(emoji_raw[2])
 

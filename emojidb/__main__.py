@@ -49,7 +49,7 @@ def emoji_index() -> Response:
 def emoji_by_id(emoji_id: str) -> Response:
     if emoji_id not in all_emoji_ids():
         raise EmojiNotFound
-    for ext in ['webp', 'png', 'gif', 'jpeg', 'jpg']:
+    for ext in ['png', 'gif', 'jpeg', 'jpg']:
         if (emoji := IMG_FOLDER.joinpath(f'{emoji_id}.{ext}')).exists():
             return send_file(emoji)
     app.aborter(500, description='Emoji exists, but is badly configured.')
